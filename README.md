@@ -83,3 +83,173 @@ arr.forEach(item => console.log(item));
 // Expected output:
 // 1 
 // two
+
+sort - this method converts each item in the array into strings and constructs the sequence by comparing each array item based on the UTF-16 code valies when there is no callback specified. UTF-16 is the standardized form for translating bits into a format comprehensible to humans. its basically a translation table for a corresponding character.
+
+examples
+1. const teams = ['Real Madrid', 'Manchester Utd', 'Bayern Munich', 'Juventus'];
+teams.sort(); 
+
+// ['Bayern Munich', 'Juventus', 'Manchester Utd', 'Real Madrid']
+
+2. const numbers = [3, 23, 12];
+
+numbers.sort(); // --> 12, 23, 3
+
+3. const numbers = [3, 23, 12];
+
+numbers.sort(function(a, b){return b - a}); // --> 23, 12, 3
+
+slice - this method copies a given part of an array and returns that copied part as a new array. it doesnt change the orginal array. it does not include the last given element.
+
+examples
+1. let fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
+let citrus = fruits.slice(1, 3)
+
+// fruits contains ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
+// citrus contains ['Orange','Lemon']
+
+2. var colors = ['red','green','blue','yellow','purple'];
+var rgb = colors.slice(0,3);
+console.log(rgb); // ["red", "green", "blue"]
+
+3. var a = [1,2,3,4,5];
+a.slice(0,3);    // Returns [1,2,3]
+a.slice(3);      // Returns [4,5]
+a.slice(1,-1);   // Returns [2,3,4]
+
+pop - this method removes the last element from an array and returns that element, which changes the length of the array. if you call pop on an empty array it returns undefined. 
+
+examples
+1. var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+
+var popped = myFish.pop();
+
+console.log(myFish); // ['angel', 'clown', 'mandarin' ]
+
+console.log(popped); // 'sturgeon'
+
+2. var languages = ["JavaScript", "Python", "Java", "C++", "Lua"];
+
+var popped = languages.pop();
+
+console.log(languages); // [ 'JavaScript', 'Python', 'Java', 'C++' ]
+
+3. let cats = ['Bob', 'Willy', 'Mini'];
+
+cats.pop(); // ['Bob', 'Willy']
+
+shift - this method removes the first element from an array and returns that removed element. this method changes the length of the array.
+
+examples
+1. var languages = ["JavaScript", "Python", "Java", "C++", "Lua"];
+
+var shifted = languages.shift();
+
+console.log(languages); // [ 'Python', 'Java', 'C++', 'Lua' ]
+
+2. let apps = ["Instagram", "Facebook", "Messanger"];
+apps.shift();
+
+console.log(apps);
+
+3. let names = ["Harvey", "Donna", "Mike", "Rachel" ,"Louis", "Jessica"];
+
+while( (i = names.shift()) !== undefined ) {
+    console.log(i);
+}
+
+push - this method add one or more elements to the end of an array and returns the new length of the array.
+
+examples
+1. const animals = ['pigs', 'goats', 'sheep'];
+const count = animals.push('cows');
+console.log(animals);
+// expected output: Array ["pigs", "goats", "sheep", "cows"]
+
+2. let sports = ['soccer', 'baseball']
+let total = sports.push('football', 'swimming')
+
+console.log(sports)  // ['soccer', 'baseball', 'football', 'swimming']
+
+3. let vegetables = ['parsnip', 'potato']
+let moreVegs = ['celery', 'beetroot']
+
+// Merge the second array into the first one
+// Equivalent to vegetables.push('celery', 'beetroot')
+Array.prototype.push.apply(vegetables, moreVegs)
+
+console.log(vegetables)  // ['parsnip', 'potato', 'celery', 'beetroot']
+
+unshift - this method adds one or more elements to the beginning of an array and returns the new length of the array.
+
+examples
+1. const array1 = [1, 2, 3];
+console.log(array1);
+// expected output: Array [4, 5, 1, 2, 3]
+
+2. let apps = ["Instagram", "Facebook", "Messanger"];
+apps.unshift("Oculus", "WhatsApp");
+
+console.log(apps);
+
+3. let arr = [1, 2];
+
+arr.unshift(0); // result of call is 3, the new array length
+// arr is [0, 1, 2]
+
+includes - this method determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+
+examples 
+1. const array1 = [1, 2, 3];
+
+console.log(array1.includes(2));
+// expected output: true
+
+2. var totn_string = 'TechOnTheNet';
+
+console.log(totn_string.includes('e'));
+
+3. var totn_string = 'TechOnTheNet';
+
+console.log(totn_string.includes('The'));
+
+indexOf - this method returns the first index at which a given element can be found in the array, or -1 if it is not present.
+
+examples
+1. const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+console.log(beasts.indexOf('bison'));
+// expected output: 1
+
+2. var array = [2, 9, 9];
+array.indexOf(2);     // 0
+array.indexOf(7);     // -1
+array.indexOf(9, 2);  // 2
+array.indexOf(2, -1); // -1
+array.indexOf(2, -3); // 0
+
+3. const letters = ['a', 'b', 'c']
+
+const index = letters.indexOf('b')
+
+//index is `1`
+
+every - this method tests whether all elements in the array pass the test implemented by the provided function. it returns a boolean value. 
+
+examples
+1. const isBelowThreshold = (currentValue) => currentValue < 40;
+
+const array1 = [1, 30, 39, 29, 10, 13];
+
+console.log(array1.every(isBelowThreshold));
+// expected output: true
+
+2. function isBigEnough(element, index, array) {
+  return element >= 10;
+}
+[12, 5, 8, 130, 44].every(isBigEnough);   // false
+[12, 54, 18, 130, 44].every(isBigEnough); // true
+
+3. [12, 5, 8, 130, 44].every(x => x >= 10);   // false
+[12, 54, 18, 130, 44].every(x => x >= 10); // true
